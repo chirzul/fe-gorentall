@@ -20,7 +20,7 @@ export class Home extends Component {
   getPopularVehicle = async () => {
     try {
       const { data } = await axios.get(
-        process.env.REACT_APP_BASE_URL + 'vehicles/popular'
+        process.env.REACT_APP_BASE_URL + 'vehicles'
       )
       const dataVehicle = data.data
       this.setState({ vehicle: dataVehicle })
@@ -142,7 +142,11 @@ export class Home extends Component {
 
               <div className="row">
                 {this.state.vehicle.map((v, k) => {
-                  return <Card image={v.image} loc={v.name} city={v.location} />
+                  if (k < 4) {
+                    return (
+                      <Card image={v.image} loc={v.name} city={v.location} />
+                    )
+                  }
                 })}
               </div>
             </div>
