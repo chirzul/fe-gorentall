@@ -1,0 +1,13 @@
+.card-popular {
+  margin-bottom: 30px;
+}
+
+.card-content {
+  padding: 10px 0 0 15px;
+  height: 70px;
+  width: 45%;
+  background-color: white;
+  position: relative;
+  bottom: 100px;
+  border-radius: 0 10px 0 0;
+}
