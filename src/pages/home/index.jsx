@@ -22,8 +22,7 @@ export class Home extends Component {
       const { data } = await axios.get(
         process.env.REACT_APP_BASE_URL + 'vehicles'
       )
-      const dataVehicle = data.data
-      this.setState({ vehicle: dataVehicle })
+      this.setState({ vehicle: data.data })
     } catch (error) {
       console.log(error)
     }
