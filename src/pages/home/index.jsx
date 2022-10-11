@@ -131,7 +131,7 @@ export class Home extends Component {
                   <h2 className="title">Popular in Town</h2>
                 </div>
                 <div className="col-sm-6">
-                  <Link to="/vehicles" className="view-all">
+                  <Link to="/vehicles/all" className="view-all">
                     <p className="text-end fw-bold">
                       {'View all '}
                       <b>{'>'}</b>
@@ -144,7 +144,12 @@ export class Home extends Component {
                 {this.state.vehicle.map((v, k) => {
                   if (k < 4) {
                     return (
-                      <Card image={v.image} loc={v.name} city={v.location} />
+                      <Card
+                        id={v.vehicle_id}
+                        image={v.image}
+                        name={v.name}
+                        city={v.location}
+                      />
                     )
                   }
                 })}

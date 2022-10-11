@@ -86,3 +86,8 @@
 .testimonials {
   margin-bottom: 90px;
 }
+
+.reset {
+  text-decoration: none;
+  color: #000;
+}

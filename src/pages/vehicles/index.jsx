@@ -49,6 +49,25 @@ export class Vehicles extends Component {
     return (
       <div className="App">
         <Navbar />
+        <div className="container">
+          <div className="row">
+            <div className="col-6">
+              <input
+                className="form-control"
+                type="text"
+                placeholder="Search"
+              ></input>
+            </div>
+          </div>
+          <br />
+          <div className="row">
+            <div className="col-4">
+              <button className="btn btn-lg btn-warning w-100 fw-bold">
+                Search
+              </button>
+            </div>
+          </div>
+        </div>
         <section className="popular-in-town">
           <div className="container">
             <div className="row">
@@ -56,7 +75,7 @@ export class Vehicles extends Component {
                 <h2 className="title">Popular in Town</h2>
               </div>
               <div className="col-sm-6">
-                <Link to="/vehicles" className="view-all">
+                <Link to="/vehicles/all" className="view-all">
                   <p className="text-end fw-bold">
                     {'View all '}
                     <b>{'>'}</b>
@@ -68,7 +87,14 @@ export class Vehicles extends Component {
             <div className="row">
               {this.state.vehicle.map((v, k) => {
                 if (k < 4) {
-                  return <Card image={v.image} loc={v.name} city={v.location} />
+                  return (
+                    <Card
+                      id={v.vehicle_id}
+                      image={v.image}
+                      name={v.name}
+                      city={v.location}
+                    />
+                  )
                 }
               })}
             </div>
@@ -82,7 +108,7 @@ export class Vehicles extends Component {
                 <h2 className="title">Cars</h2>
               </div>
               <div className="col-sm-6">
-                <Link to="/vehicles" className="view-all">
+                <Link to="/vehicles/Cars" className="view-all">
                   <p className="text-end fw-bold">
                     {'View all '}
                     <b>{'>'}</b>
@@ -94,7 +120,14 @@ export class Vehicles extends Component {
             <div className="row">
               {this.state.cars.map((v, k) => {
                 if (k < 4) {
-                  return <Card image={v.image} loc={v.name} city={v.location} />
+                  return (
+                    <Card
+                      id={v.vehicle_id}
+                      image={v.image}
+                      name={v.name}
+                      city={v.location}
+                    />
+                  )
                 }
               })}
             </div>
@@ -107,7 +140,7 @@ export class Vehicles extends Component {
                 <h2 className="title">Motocycle</h2>
               </div>
               <div className="col-sm-6">
-                <Link to="/vehicles" className="view-all">
+                <Link to="/vehicles/Motocycle" className="view-all">
                   <p className="text-end fw-bold">
                     {'View all '}
                     <b>{'>'}</b>
@@ -119,7 +152,14 @@ export class Vehicles extends Component {
             <div className="row">
               {this.state.motocycle.map((v, k) => {
                 if (k < 4) {
-                  return <Card image={v.image} loc={v.name} city={v.location} />
+                  return (
+                    <Card
+                      id={v.vehicle_id}
+                      image={v.image}
+                      name={v.name}
+                      city={v.location}
+                    />
+                  )
                 }
               })}
             </div>
@@ -132,7 +172,7 @@ export class Vehicles extends Component {
                 <h2 className="title">Bike</h2>
               </div>
               <div className="col-sm-6">
-                <Link to="/vehicles" className="view-all">
+                <Link to="/vehicles/Bike" className="view-all">
                   <p className="text-end fw-bold">
                     {'View all '}
                     <b>{'>'}</b>
@@ -144,7 +184,14 @@ export class Vehicles extends Component {
             <div className="row">
               {this.state.bike.map((v, k) => {
                 if (k < 4) {
-                  return <Card image={v.image} loc={v.name} city={v.location} />
+                  return (
+                    <Card
+                      id={v.vehicle_id}
+                      image={v.image}
+                      name={v.name}
+                      city={v.location}
+                    />
+                  )
                 }
               })}
             </div>
