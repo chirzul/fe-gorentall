@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
 import Navbar from '../../components/navbar'
 import Footer from '../../components/footer'
-import Card from '../../components/card'
-import { Link } from 'react-router-dom'
 import './style.css'
 import axios from 'axios'
 

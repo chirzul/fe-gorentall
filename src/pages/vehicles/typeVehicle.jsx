@@ -38,7 +38,17 @@ export class TypeVehicle extends Component {
     return (
       <div className="App">
         <Navbar />
-
+        <div className="container">
+          <div className="row">
+            <div className="col-6">
+              <input
+                className="form-control"
+                type="text"
+                placeholder="Search"
+              ></input>
+            </div>
+          </div>
+        </div>
         <section className="popular-in-town">
           <div className="container">
             <div className="row">

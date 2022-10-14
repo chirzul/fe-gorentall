@@ -49,25 +49,6 @@ export class Vehicles extends Component {
     return (
       <div className="App">
         <Navbar />
-        <div className="container">
-          <div className="row">
-            <div className="col-6">
-              <input
-                className="form-control"
-                type="text"
-                placeholder="Search"
-              ></input>
-            </div>
-          </div>
-          <br />
-          <div className="row">
-            <div className="col-4">
-              <button className="btn btn-lg btn-warning w-100 fw-bold">
-                Search
-              </button>
-            </div>
-          </div>
-        </div>
         <section className="popular-in-town">
           <div className="container">
             <div className="row">
