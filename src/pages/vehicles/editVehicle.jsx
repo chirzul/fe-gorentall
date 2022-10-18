@@ -4,13 +4,14 @@ import Header from '../../components/navbar'
 import useApi from '../../helpers/useApi'
 import './style.css'
 import withAuth from '../../helpers/withAuth'
-import { useParams } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 
 function EditVehicle() {
   const params = useParams()
   const [vehicle, setVehicle] = useState({})
   const [data, setData] = useState({})
 
+  const navigate = useNavigate()
   const api = useApi()
 
   const onChangeInput = (event) => {
