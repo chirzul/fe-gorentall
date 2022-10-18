@@ -42,6 +42,7 @@ function EditVehicle() {
       })
       .then((res) => {
         console.log(res)
+        navigate('/admin')
       })
       .catch((err) => {
         alert(err)
@@ -77,6 +78,7 @@ function EditVehicle() {
       <main>
         <section className="mt-5">
           <div className="container">
+            <h2>Edit Vehicle</h2>
             <div className="row">
               <div className="col">
                 <input
@@ -135,14 +137,14 @@ function EditVehicle() {
                   onChange={onChangeInput}
                   required
                 ></input>
-                <input
+                {/* <input
                   className="form-control form-control-lg"
                   name="image"
                   type="file"
                   defaultValue="Image"
                   onChange={onChangeFile}
                   required
-                ></input>
+                ></input> */}
                 <br />
                 <button
                   className="btn btn-lg btn-warning w-100 fw-bold mb-5"
