@@ -17,3 +17,7 @@ header {
 .navbtn {
   width: 132px;
 }
+
+.btnlog {
+  font-weight: bold;
+}

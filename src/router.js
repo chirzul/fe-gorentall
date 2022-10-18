@@ -5,7 +5,10 @@ import Login from './pages/login'
 import Register from './pages/register'
 import Vehicles from './pages/vehicles'
 import TypeVehicle from './pages/vehicles/typeVehicle'
+import AddVehicle from './pages/vehicles/addVehicle'
 import Details from './pages/vehicles/details'
+import Admin from './pages/admin'
+import EditVehicle from './pages/vehicles/editVehicle'
 
 function Router() {
   return (
@@ -17,6 +20,9 @@ function Router() {
         <Route exact path="/vehicles" element={<Vehicles />} />
         <Route exact path="/vehicles/:category" element={<TypeVehicle />} />
         <Route exact path="/vehicles/details/:id" element={<Details />} />
+        <Route exact path="/vehicles/add" element={<AddVehicle />} />
+        <Route exact path="/vehicles/edit/:id" element={<EditVehicle />} />
+        <Route exact path="/admin" element={<Admin />} />
       </Routes>
     </BrowserRouter>
   )

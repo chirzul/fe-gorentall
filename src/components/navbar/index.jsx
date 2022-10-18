@@ -1,9 +1,36 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import './style.css'
+import { useDispatch, useSelector } from 'react-redux'
 import logo from '../../img/logo.png'
-import { Link } from 'react-router-dom'
+import { logout } from '../../store/reducer/user'
+import { Link, useLocation } from 'react-router-dom'
+import useApi from '../../helpers/useApi'
 
-function Navbar() {
+function Navbar(props) {
+  const dispatch = useDispatch()
+  const { isAuth } = useSelector((state) => state.users)
+  const [user, setUser] = useState({})
+  const api = useApi()
+
+  const getUser = () => {
+    api
+      .requests({
+        method: 'GET',
+        url: '/users/profile'
+      })
+      .then((res) => {
+        const { data } = res.data
+        setUser(data)
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+  }
+
+  useEffect(() => {
+    getUser()
+  }, [])
+
   return (
     <div className="container">
       <header className="py-3">
@@ -37,22 +64,45 @@ function Navbar() {
                 <a className="nav-link navmenu" href="#">
                   About
                 </a>
-                <Link to="/login">
-                  <button
-                    type="button"
-                    className="btn btn-outline-warning rounded-3 mx-2 my-2 navbtn"
-                  >
-                    Login
-                  </button>
-                </Link>
-                <Link to="/register">
-                  <button
-                    type="button"
-                    className="btn btn-warning rounded-3 mx-2 my-2 navbtn"
-                  >
-                    Register
-                  </button>
-                </Link>
+                {isAuth ? (
+                  <div className="dropdown">
+                    <button
+                      className="btn btn-secondary dropdown-toggle btnlog"
+                      type="button"
+                      data-bs-toggle="dropdown"
+                      aria-expanded="false"
+                    >
+                      Welcome, {user.username}
+                    </button>
+                    <ul className="dropdown-menu">
+                      <li
+                        className="dropdown-item"
+                        onClick={() => dispatch(logout())}
+                      >
+                        Logout
+                      </li>
+                    </ul>
+                  </div>
+                ) : (
+                  <>
+                    <Link to="/login">
+                      <button
+                        type="button"
+                        className="btn btn-outline-warning rounded-3 mx-2 my-2 navbtn"
+                      >
+                        Login
+                      </button>
+                    </Link>
+                    <Link to="/register">
+                      <button
+                        type="button"
+                        className="btn btn-warning rounded-3 mx-2 my-2 navbtn"
+                      >
+                        Register
+                      </button>
+                    </Link>
+                  </>
+                )}
               </div>
             </div>
           </div>

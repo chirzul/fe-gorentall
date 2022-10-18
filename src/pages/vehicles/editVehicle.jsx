@@ -1,0 +1,163 @@
+import React, { useState, useEffect } from 'react'
+import Footer from '../../components/footer'
+import Header from '../../components/navbar'
+import useApi from '../../helpers/useApi'
+import './style.css'
+import withAuth from '../../helpers/withAuth'
+import { useParams } from 'react-router-dom'
+
+function EditVehicle() {
+  const params = useParams()
+  const [vehicle, setVehicle] = useState({})
+  const [data, setData] = useState({})
+
+  const api = useApi()
+
+  const onChangeInput = (event) => {
+    event.preventDefault()
+
+    const tmpdata = { ...data }
+    tmpdata[event.target.name] = event.target.value
+    setData(tmpdata)
+    console.log(data)
+  }
+
+  const onChangeFile = (event) => {
+    event.preventDefault()
+
+    const file = event.target.files[0]
+    if (file) {
+      const tmpdata = { ...data }
+      tmpdata['image'] = file
+      setData(tmpdata)
+    }
+  }
+
+  const updateData = () => {
+    api
+      .requests({
+        method: 'PUT',
+        url: '/vehicles/' + params.id,
+        data: data
+      })
+      .then((res) => {
+        console.log(res)
+      })
+      .catch((err) => {
+        alert(err)
+      })
+  }
+
+  const getVehicle = () => {
+    api
+      .requests({
+        method: 'GET',
+        url: `/vehicles`
+      })
+      .then((res) => {
+        const { data } = res.data
+        for (let i = 0; i < data.length; i++) {
+          if (data[i].vehicle_id == params.id) {
+            setVehicle(data[i])
+          }
+        }
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+  }
+
+  useEffect(() => {
+    getVehicle()
+  }, [])
+
+  return (
+    <div className="App">
+      <Header />
+      <main>
+        <section className="login-bg">
+          <div className="container">
+            <div className="row">
+              <div className="col">
+                <input
+                  className="form-control form-control-lg"
+                  name="name"
+                  type="text"
+                  defaultValue={vehicle.name}
+                  onChange={onChangeInput}
+                  required
+                ></input>
+                <input
+                  className="form-control form-control-lg"
+                  name="location"
+                  type="text"
+                  defaultValue={vehicle.location}
+                  onChange={onChangeInput}
+                  required
+                ></input>
+                <input
+                  className="form-control form-control-lg"
+                  name="description"
+                  type="text"
+                  defaultValue={vehicle.description}
+                  onChange={onChangeInput}
+                  required
+                ></input>
+                <input
+                  className="form-control form-control-lg"
+                  name="price"
+                  type="number"
+                  defaultValue={vehicle.price}
+                  onChange={onChangeInput}
+                  required
+                ></input>
+                <input
+                  className="form-control form-control-lg"
+                  name="status"
+                  type="text"
+                  defaultValue={vehicle.status}
+                  onChange={onChangeInput}
+                  required
+                ></input>
+                <input
+                  className="form-control form-control-lg"
+                  name="stock"
+                  type="text"
+                  defaultValue={vehicle.stock}
+                  onChange={onChangeInput}
+                  required
+                ></input>
+                <input
+                  className="form-control form-control-lg"
+                  name="category"
+                  type="text"
+                  defaultValue={vehicle.category}
+                  onChange={onChangeInput}
+                  required
+                ></input>
+                {/* <input
+                  className="form-control form-control-lg"
+                  name="image"
+                  type="file"
+                  defaultValue="Image"
+                  onChange={onChangeFile}
+                  required
+                ></input> */}
+                <br />
+                <button
+                  className="btn btn-lg btn-warning w-100 fw-bold"
+                  onClick={updateData}
+                >
+                  Save
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+      <Footer />
+    </div>
+  )
+}
+
+export default withAuth(EditVehicle)
