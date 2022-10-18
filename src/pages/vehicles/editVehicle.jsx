@@ -75,7 +75,7 @@ function EditVehicle() {
     <div className="App">
       <Header />
       <main>
-        <section className="login-bg">
+        <section className="mt-5">
           <div className="container">
             <div className="row">
               <div className="col">
@@ -145,7 +145,7 @@ function EditVehicle() {
                 ></input> */}
                 <br />
                 <button
-                  className="btn btn-lg btn-warning w-100 fw-bold"
+                  className="btn btn-lg btn-warning w-100 fw-bold mb-5"
                   onClick={updateData}
                 >
                   Save

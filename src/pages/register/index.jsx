@@ -13,7 +13,7 @@ function Register() {
     username: '',
     email: '',
     password: '',
-    role: 'admin'
+    role: 'user'
   })
 
   const { isAuth } = useSelector((state) => state.users)
