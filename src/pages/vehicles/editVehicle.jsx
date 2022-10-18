@@ -130,22 +130,20 @@ function EditVehicle() {
                   onChange={onChangeInput}
                   required
                 ></input>
-                <input
-                  className="form-control form-control-lg"
+                <br />
+                <select
                   name="category"
-                  type="text"
+                  className="form-select"
                   defaultValue={vehicle.category}
                   onChange={onChangeInput}
-                  required
-                ></input>
-                {/* <input
-                  className="form-control form-control-lg"
-                  name="image"
-                  type="file"
-                  defaultValue="Image"
-                  onChange={onChangeFile}
-                  required
-                ></input> */}
+                >
+                  <option value="" selected disabled hidden>
+                    {vehicle.category}
+                  </option>
+                  <option value="Cars">Cars</option>
+                  <option value="Motocycle">Motocycle</option>
+                  <option value="Bike">Bike</option>
+                </select>
                 <br />
                 <button
                   className="btn btn-lg btn-warning w-100 fw-bold mb-5"

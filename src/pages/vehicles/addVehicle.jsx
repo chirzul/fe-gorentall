@@ -118,14 +118,17 @@ function AddVehicle() {
                   onChange={onChangeInput}
                   required
                 ></input>
-                <input
-                  className="form-control form-control-lg"
+                <br />
+                <select
                   name="category"
-                  type="text"
-                  placeholder="Category"
+                  className="form-select"
                   onChange={onChangeInput}
-                  required
-                ></input>
+                >
+                  <option value="">Select Category</option>
+                  <option value="Cars">Cars</option>
+                  <option value="Motocycle">Motocycle</option>
+                  <option value="Bike">Bike</option>
+                </select>
                 <input
                   className="form-control form-control-lg"
                   name="image"
